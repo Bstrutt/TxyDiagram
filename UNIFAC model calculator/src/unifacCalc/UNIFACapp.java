@@ -74,7 +74,7 @@ public class UNIFACapp extends Application {
 	@Override public void start(Stage stage) {
 		double tempMax = -10000;
         double tempMin = 10000;
-		for(int i = 0; i < 100; i++){
+		for(int i = 0; i < 99; i++){
 			if(tempVals[i] > tempMax){
         		tempMax = tempVals[i];
         	}
@@ -86,7 +86,7 @@ public class UNIFACapp extends Application {
         stage.setTitle("Txy Diagram");
         final NumberAxis xAxis = new NumberAxis(0, 1, .1);
         
-        final NumberAxis yAxis = new NumberAxis(tempMin, tempMax, (tempMax/tempMin)/5);        
+        final NumberAxis yAxis = new NumberAxis(tempMin, tempMax, (tempMax-tempMin)/5);        
         final ScatterChart<Number,Number> sc = new
             ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("x1,y1");                

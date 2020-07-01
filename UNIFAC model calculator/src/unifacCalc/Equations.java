@@ -11,23 +11,22 @@ public class Equations {
 	
 	public static double findTemp(double[] gammas, Species[] speciesList, 
 			double[] molPercentList, double pressure, double temperature){
-		double y = Math.log10((((1-molPercentList[0]) * gammas[1]) - pressure)/(-molPercentList[0] * gammas[1])) 
-				- speciesList[0].A + speciesList[1].A;
-		double a = -y;
-		double b = -speciesList[0].B + speciesList[1].B - (y * speciesList[0].C) - (y * speciesList[1].C);
-		double c = -(speciesList[0].B * speciesList[1].C - speciesList[1].B * speciesList[0].C + y*speciesList[0].C*speciesList[1].C);
-		double temp1 = (-b + Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a);
-		double temp2 = (-b - Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a);
-		
-		if(temp1 < -273.15 && temp2 < -273.15){
-			System.out.println("Something has gone wrong.");
+		UnivariateTemp a = new UnivariateTemp(gammas, speciesList, molPercentList, pressure);
+		double tempMin = -273.15;
+		double tempMax = 500;
+		double tolerance = 0.000001;
+		double difference = 1.0;
+		while(Math.abs(difference) > tolerance){
+			difference = a.univariateFunc((tempMin+tempMax)/2);
+			if(difference > 0){
+				tempMin = tempMin;
+				tempMax = (tempMin+tempMax)/2;
+			} else if (difference < 0){
+				tempMin = (tempMin+tempMax)/2;
+				tempMax = tempMax;
+			}
 		}
-		
-		if(Math.abs(temperature - temp1) > Math.abs(temperature - temp2)){
-			return temp2;
-		} else {
-			return temp1;
-		}
+		return (tempMin+tempMax)/2;
 	}
 	
 	public static double[] uRound(Species[] speciesList, double[] molPercentList, double temperature){
