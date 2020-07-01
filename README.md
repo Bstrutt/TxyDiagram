@@ -1,4 +1,8 @@
 # TxyDiagram
+Authors : Bryce A Struttman, Heidi Snell.
+
+Bryce took care of the coding, Heidi took care of the math.
+
 
 This project was a test of Java skills as well as my ability to understand what should be basic chemical engineering concepts.
 The java was easy, the chemE math was anything but.
