@@ -5,12 +5,12 @@ package unifacCalc;
  *
  * @author Bryce
  */
-public class UNIFACGUI extends javax.swing.JFrame {
+public class TxyGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form ContactEditorUI
      */
-    public UNIFACGUI() {
+    public TxyGUI() {
         initComponents();
     }
 
@@ -118,7 +118,7 @@ public class UNIFACGUI extends javax.swing.JFrame {
         String species1 = jComboBox1.getSelectedItem().toString();
         String species2 = jComboBox2.getSelectedItem().toString();
         String[] inputs = {species1, species2};
-        UNIFACapp.main(inputs);
+        TxyGraph.main(inputs);
     }                                     
 
     /**
@@ -129,7 +129,7 @@ public class UNIFACGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UNIFACGUI().setVisible(true);
+                new TxyGUI().setVisible(true);
             }
         });
     }

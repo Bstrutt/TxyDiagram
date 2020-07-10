@@ -20,7 +20,7 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class UNIFACapp extends Application {
+public class TxyGraph extends Application {
 	static double temperature;
 	static double[] xVals;
 	static double[] tempVals;
